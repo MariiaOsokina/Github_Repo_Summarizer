@@ -29,8 +29,7 @@ python main.py
 ```
 The server will run on http://localhost:8000.
 ## Design Decisions
-- Model Choice: meta-llama/Meta-Llama-3.1-8B-Instruct-fast via Nebius because it is highly capable of structured JSON generation, fast, and handles coding context exceptionally well.
-- Repository Content Handling: To manage the LLM context window limits, I prioritized files that provide the highest signal-to-noise ratio:
-- Included: The first 2000 characters of the README.md (to get the project's own description), the top-level directory structure (to understand architecture), and the first 500 characters of key manifest files like requirements.txt or package.json (to accurately identify tech stacks).
-
-- Skipped: Hidden files (.git), standard boilerplate folders (node_modules, venv), and raw source code files. Sending full source code risks exceeding the context window and dilutes the architectural summary.
+- *Model Choice:* meta-llama/Meta-Llama-3.1-8B-Instruct-fast via Nebius because it is highly capable of structured JSON generation, fast, and handles coding context exceptionally well.
+- *Repository Content Handling:* To manage the LLM context window limits, I prioritized files that provide the highest signal-to-noise ratio:
+- *Included:* The first 2000 characters of the README.md (to get the project's own description), the top-level directory structure (to understand architecture), and the first 500 characters of key manifest files like requirements.txt or package.json (to accurately identify tech stacks).
+- *Skipped:* Hidden files (.git), standard boilerplate folders (node_modules, venv), and raw source code files. Sending full source code risks exceeding the context window and dilutes the architectural summary.
