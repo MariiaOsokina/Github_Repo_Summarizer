@@ -37,7 +37,11 @@ curl -X POST http://localhost:8000/summarize \
 ```
 
 ## Design Decisions
-- *Model Choice:* meta-llama/Meta-Llama-3.1-8B-Instruct-fast via Nebius because it is highly capable of structured JSON generation, fast, and handles coding context exceptionally well.
-- *Repository Content Handling:* To manage the LLM context window limits, I prioritized files that provide the highest signal-to-noise ratio:
-- *Included:* The first 2000 characters of the README.md (to get the project's own description), the top-level directory structure (to understand architecture), and the first 500 characters of key manifest files like requirements.txt or package.json (to accurately identify tech stacks).
-- *Skipped:* Hidden files (.git), standard boilerplate folders (node_modules, venv), and raw source code files. Sending full source code risks exceeding the context window and dilutes the architectural summary.
+*Model Choice:* "deepseek-ai/DeepSeek-V3-0324-fast" via Nebius because it is highly efficient for code analysis, offering the balance of reasoning capabilities and speed needed for real-time repository summarization.
+*Approach to handling repository contents:* 
+- Recursive Tree Mapping: it fetchs the full repository structure (using GitHub's Git Trees API) rather than just the root. This allows the LLM to see deep project organization (e.g., src/, tests/, docs/).
+- Intelligent Filtering: To reduce noise, the service ignores hidden files (.git), binary files, and large dependency folders like node_modules or venv.
+- Priority Snippets: it provides the LLM with the most "information-dense" sections:
+The first 2000 characters of the README.
+The first 500 characters of core manifest files (e.g., package.json, requirements.txt).
+A truncated directory tree (max 300 items) for large projects.
