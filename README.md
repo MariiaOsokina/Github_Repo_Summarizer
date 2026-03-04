@@ -26,7 +26,7 @@ export GITHUB_TOKEN="your_github_token"
 ``` 
 5. Start the Server:
 ```bash
-python main.py
+python3 main.py
 ```
 The server will run on http://localhost:8000.
 
