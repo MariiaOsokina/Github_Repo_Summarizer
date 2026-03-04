@@ -1,0 +1,11 @@
+fastapi==0.110.0
+uvicorn==0.27.1
+requests==2.31.0
+python-dotenv==1.0.1
+pydantic==2.6.1
+openai>=1.0.0
+
+# fastapi & uvicorn: These work together to host your web server.
+# requests: This is what your server will use to "talk" to the GitHub API to fetch file contents.
+# python-dotenv: This is crucial for security. It allows you to load your NEBIUS_API_KEY from a hidden .env file instead of hardcoding it.
+# pydantic: This handles the data validation (ensuring the JSON sent to your /summarize endpoint is formatted correctly).
