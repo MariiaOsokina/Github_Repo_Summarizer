@@ -23,13 +23,13 @@ export NEBIUS_API_KEY="your_nebius_api_key"
 ```
 export GITHUB_TOKEN="your_github_token"
 ``` 
-5.Start the Server:
+5. Start the Server:
 ```bash
 python main.py
 ```
 The server will run on http://localhost:8000.
 
-6. For testing : after running the server, expose the POST /summarize endpoint by sending a request like:
+6. For testing: after running the server, expose the POST /summarise endpoint by sending a request like:
 ```
 curl -X POST http://localhost:8000/summarize \
   -H "Content-Type: application/json" \
@@ -37,9 +37,9 @@ curl -X POST http://localhost:8000/summarize \
 ```
 
 ## Design Decisions
-*Model Choice:* "deepseek-ai/DeepSeek-V3-0324-fast" via Nebius because it is highly efficient for code analysis, offering the balance of reasoning capabilities and speed needed for real-time repository summarization.
+*Model Choice:* "deepseek-ai/DeepSeek-V3-0324-fast" via Nebius because it is highly efficient for code analysis, offering the balance of reasoning capabilities and speed needed for real-time repository summarisation.
 *Approach to handling repository contents:* 
-- Recursive Tree Mapping: it fetchs the full repository structure (using GitHub's Git Trees API) rather than just the root. This allows the LLM to see deep project organization (e.g., src/, tests/, docs/).
+- Recursive Tree Mapping: it fetches the full repository structure (using GitHub's Git Trees API) rather than just the root. This allows the LLM to see deep project organisation (e.g., src/, tests/, docs/).
 - Intelligent Filtering: To reduce noise, the service ignores hidden files (.git), binary files, and large dependency folders like node_modules or venv.
 - Priority Snippets: it provides the LLM with the most "information-dense" sections:
 The first 2000 characters of the README.
