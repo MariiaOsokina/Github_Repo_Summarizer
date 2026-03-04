@@ -7,7 +7,7 @@ This API service takes a GitHub repository URL and returns a human-readable summ
 1. Clone the repository and navigate to the directory.
 2. Create and activate a virtual environment:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 ```
 
