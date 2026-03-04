@@ -28,6 +28,14 @@ export GITHUB_TOKEN="your_github_token"
 python main.py
 ```
 The server will run on http://localhost:8000.
+
+6. For testing : after running the server, expose the POST /summarize endpoint by sending a request like:
+```
+curl -X POST http://localhost:8000/summarize \
+  -H "Content-Type: application/json" \
+  -d '{"github_url": "https://github.com/psf/requests"}'
+```
+
 ## Design Decisions
 - *Model Choice:* meta-llama/Meta-Llama-3.1-8B-Instruct-fast via Nebius because it is highly capable of structured JSON generation, fast, and handles coding context exceptionally well.
 - *Repository Content Handling:* To manage the LLM context window limits, I prioritized files that provide the highest signal-to-noise ratio:
