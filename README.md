@@ -20,7 +20,7 @@ Set the NEBIUS_API_KEY in your environment. You can also optionally provide a GI
 ```bash
 export NEBIUS_API_KEY="your_nebius_api_key"
 ```
-# Optional but recommended:
+Optional but recommended:
 ```
 export GITHUB_TOKEN="your_github_token"
 ``` 
